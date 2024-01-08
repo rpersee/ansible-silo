@@ -8,7 +8,7 @@
     - setup:
 
     - name: Start test container
-      docker_container:
+      community.docker.docker_container:
         name: silo_test
         state: started
         image: udondan/alpine-sshd-python:latest
@@ -73,7 +73,7 @@
   gather_facts: no
   tasks:
     - name: Remove test container
-      docker_container:
+      community.docker.docker_container:
         name:  silo_test
         state: absent
       become: yes

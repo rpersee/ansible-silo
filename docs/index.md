@@ -7,7 +7,7 @@ asciinema: true
 [![Commits since v2.2.0](https://img.shields.io/github/commits-since/groupon/ansible-silo/v2.2.0.svg?style=flat&colorB=4183C4&label=Commits%20since%20v2.2.0)](https://github.com/groupon/ansible-silo/commits/master)
 [![GitHub Stars](https://img.shields.io/github/stars/groupon/ansible-silo.svg?style=flat&colorB=4183C4&label=GitHub%20Stars)](https://github.com/groupon/ansible-silo/stargazers)
 [![Build Status](https://img.shields.io/travis/groupon/ansible-silo.svg?style=flat&label=Tests)](https://travis-ci.org/groupon/ansible-silo)
-[![Docker Build Status](https://img.shields.io/docker/automated/grpn/ansible-silo?style=flat&label=Build)](https://hub.docker.com/r/grpn/ansible-silo/builds/)
+[![Docker Build Status](https://img.shields.io/docker/automated/rpersee/ansible-silo?style=flat&label=Build)](https://hub.docker.com/r/rpersee/ansible-silo/builds/)
 [![Code Climate](https://codeclimate.com/github/groupon/ansible-silo/badges/gpa.svg)](https://codeclimate.com/github/groupon/ansible-silo)
 
 If you expect reproducible outcome of an automation system, you not only need to make sure you have a specific version of the automation system itself, but also have fixed versions of all its dependencies. The most prominent Ansible dependency which can affect your plays would be Jinja2 but this applies to all involved components.
@@ -135,7 +135,7 @@ You need to be on a system where you have installed Docker (minimum version 1.9)
 To install the `ansible-silo` executable along with Ansible replacements run:
 
 ```bash
-docker run --interactive --tty --rm --volume "$HOME/bin:/silo_install_path" grpn/ansible-silo:2.2.0 --install
+docker run --interactive --tty --rm --volume "$HOME/bin:/silo_install_path" rpersee/ansible-silo:2.2.0 --install
 ```
 
 This command mounts your `~/bin` directory so Silo can place its executables there. Select any location you like but make sure it is in your `$PATH`.
@@ -143,7 +143,7 @@ This command mounts your `~/bin` directory so Silo can place its executables the
 To install `ansibe-silo` for all users you can mount `/usr/local/bin`:
 
 ```bash
-docker run --interactive --tty --rm --volume "/usr/local/bin:/silo_install_path" grpn/ansible-silo:2.2.0 --install
+docker run --interactive --tty --rm --volume "/usr/local/bin:/silo_install_path" rpersee/ansible-silo:2.2.0 --install
 ```
 
 ### Uninstall ansible-silo
@@ -164,7 +164,7 @@ find -L "$(dirname $(command -v ansible-silo))" -samefile "$(command -v ansible-
 All versions of the ansible-silo images can be deleted per:
 
 ```bash
-docker rmi --force $(docker images -q grpn/ansible-silo | uniq)
+docker rmi --force $(docker images -q rpersee/ansible-silo | uniq)
 ```
 
 
@@ -236,7 +236,7 @@ pip is pre-configured to install packages into the volume:
 
 ```bash
 $ ansible-silo --shell pip install pbr==3.1.1
-/usr/lib/python2.7/site-packages/pip/commands/install.py:194: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.
+/usr/lib/python3.10/site-packages/pip/commands/install.py:194: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.
   cmdoptions.check_install_build_global(options)
 Collecting pbr==3.1.1
   Downloading pbr-3.1.1.tar.gz (102kB)
@@ -285,7 +285,7 @@ Which will show something along these lines:
 
     Executing: /tmp/ansible-silo-runner-2.2.0 "--shell" "exit"
 
-    Executing: /usr/bin/docker run --interactive --tty --rm --volume "/home/daniel.schroeder/ansible-silo:/home/user/playbooks" --volume "silo.some.user:/silo/userspace" --env "SILO_VOLUME=silo.some.user" --hostname "silo.example.com" --volume /var/run/docker.sock:/var/run/docker.sock --privileged  --volume "/home/some.user/.ssh:/home/user/._ssh" --volume "/tmp/ssh-6k3r1bCpCi":"/tmp/ssh-6k3r1bCpCi" --env SSH_AUTH_SOCK --env USER_NAME="some.user" --env USER_ID="1234" "grpn/ansible-silo:2.2.0" "--shell" "exit"
+    Executing: /usr/bin/docker run --interactive --tty --rm --volume "/home/rpersee/ansible-silo:/home/user/playbooks" --volume "silo.some.user:/silo/userspace" --env "SILO_VOLUME=silo.some.user" --hostname "silo.example.com" --volume /var/run/docker.sock:/var/run/docker.sock --privileged  --volume "/home/some.user/.ssh:/home/user/._ssh" --volume "/tmp/ssh-6k3r1bCpCi":"/tmp/ssh-6k3r1bCpCi" --env SSH_AUTH_SOCK --env USER_NAME="some.user" --env USER_ID="1234" "rpersee/ansible-silo:2.2.0" "--shell" "exit"
 
 The first _Executing_ line shows the location of the generated runner script. The last line shows the Docker command executed by the runner script.
 
@@ -373,7 +373,7 @@ All arguments after the `--shell` option will be directly executed.
 
 ```bash
 $ ansible-silo --shell pip install pbr==3.1.1
-/usr/lib/python2.7/site-packages/pip/commands/install.py:194: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.
+/usr/lib/python3.10/site-packages/pip/commands/install.py:194: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.
   cmdoptions.check_install_build_global(options)
 Collecting pbr==3.1.1
   Downloading pbr-3.1.1.tar.gz (102kB)

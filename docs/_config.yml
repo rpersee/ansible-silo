@@ -28,7 +28,7 @@ top_navigation:
   - title: GitHub
     url: https://github.com/groupon/ansible-silo
   - title: Docker Hub
-    url: https://hub.docker.com/r/grpn/ansible-silo/
+    url: https://hub.docker.com/r/rpersee/ansible-silo/
   - title: Travis CI
     url: https://travis-ci.org/groupon/ansible-silo
   - title: Engineering Jobs

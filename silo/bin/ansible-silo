@@ -91,7 +91,7 @@ silo() {
     fi
 
     docker run --interactive --rm --volume "${SILO_PATH}:/silo_install_path" \
-      ${tty} grpn/ansible-silo:latest --install
+      ${tty} rpersee/ansible-silo:latest --install
     exit
   elif [[ "$1" == "--reset" ]]; then
     docker volume rm "silo.${SILO_VOLUME:-$(whoami)}"

@@ -29,7 +29,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # This image is based on ansible-silo
-FROM grpn/ansible-silo:{{ SILO_VERSION }}
+FROM rpersee/ansible-silo:{{ SILO_VERSION }}
 
 # Define which Ansible version we want to use. Unlike the base silo image, this image has a hardcoded Ansible version:
 ENV ANSIBLE_VERSION {{ ANSIBLE_VERSION }}

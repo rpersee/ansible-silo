@@ -85,9 +85,9 @@ pec "ansible --version || ansible-silo --version"
 
 info "Let's install Ansible Silo:"
 p "docker run --interactive --tty --rm --volume\
- \"\$HOME/bin:/silo_install_path\" grpn/ansible-silo:2.2.0 --install"
+ \"\$HOME/bin:/silo_install_path\" rpersee/ansible-silo:2.2.0 --install"
 docker run --interactive --tty --rm --volume "$HOME/bin:/silo_install_path" \
-  grpn/ansible-silo:2.2.0 --install
+  rpersee/ansible-silo:2.2.0 --install
 
 info "Now Ansible is installed in \$HOME/bin:"
 pec "which ansible"
@@ -194,7 +194,7 @@ pec "mv -ft example/playbooks playbook.yml roles inventory"
 info "Now let's build the bundle image:"
 pe "cd example"
 pec "./build 0.0.1"
-pec "docker images" 'docker images | grep "grpn\|REPOSITORY\|example "'
+pec "docker images" 'docker images | grep "rpersee\|REPOSITORY\|example "'
 
 info "The source directory is no longer needed to run the playbook. All\
  files are packed inside the bundle:"

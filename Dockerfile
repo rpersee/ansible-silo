@@ -28,21 +28,27 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-FROM grpn/ansible-silo-base:2.0.1
+FROM rpersee/ansible-silo-base:3.0.0
 
-ENV ANSIBLE_VERSION v2.7.0
-ENV ANSIBLE_LINT_VERSION 3.5.0
-ENV SILO_IMAGE grpn/ansible-silo
+ENV ANSIBLE_VERSION v2.16.2
+ENV ANSIBLE_LINT_VERSION 6.22.1
+ENV ANSIBLE_COMPAT_VERSION 4.1.10
+ENV SILO_IMAGE rpersee/ansible-silo
 
 ADD silo /silo/
 
 # Install pip modules from requirements file
 ADD pip/requirements /tmp/pip-requirements.txt
-RUN pip install -r /tmp/pip-requirements.txt
+RUN pip install "cython<3.0.0" wheel &&\
+    pip install "pyyaml==5.4.1" --no-build-isolation &&\
+    pip install --no-deps -r /tmp/pip-requirements.txt
+
+# Define the Python user site-packages directory
+ENV PYTHONUSERBASE /silo/userspace
 
 # Installing Ansible from source
-RUN git clone --progress https://github.com/ansible/ansible.git /silo/userspace/ansible 2>&1 &&\
-    cd /silo/userspace/ansible &&\
+RUN git clone --progress https://github.com/ansible/ansible.git ${PYTHONUSERBASE}/ansible 2>&1 &&\
+    cd ${PYTHONUSERBASE}/ansible &&\
     git checkout --force ${ANSIBLE_VERSION} 2>&1 &&\
     git submodule update --init --recursive 2>&1 &&\
     #
@@ -56,13 +62,13 @@ RUN git clone --progress https://github.com/ansible/ansible.git /silo/userspace/
     echo "ControlPath  /home/user/.ssh/tmp/%h_%p_%r" > /etc/ssh/ssh_config &&\
     #
     # User pip installs should be written to custom location
-    echo "install-option = --install-scripts=/silo/userspace/bin --prefix=/silo/userspace" >> /etc/pip.conf &&\
+    echo "export PYTHONUSERBASE=${PYTHONUSERBASE}" >> /home/user/.bashrc &&\
     #
     # Grant write access to the userspace sub directories
-    chmod 777 /silo/userspace/bin /silo/userspace/lib /silo/userspace/lib/python2.7/site-packages &&\
+    chmod 777 ${PYTHONUSERBASE}/bin ${PYTHONUSERBASE}/lib ${PYTHONUSERBASE}/lib/python3.10/site-packages &&\
     #
     # Install ansible-lint via pip into user-space - means, the version can be managed by the user per pip
-    pip install --no-deps ansible-lint==${ANSIBLE_LINT_VERSION} &&\
+    pip install --no-deps --user ansible-lint==${ANSIBLE_LINT_VERSION} ansible-compat==${ANSIBLE_COMPAT_VERSION} &&\
     #
     # Show installed APK packages and their versions (to be copied into docs)
     echo "----------------------------------------" &&\
@@ -71,6 +77,9 @@ RUN git clone --progress https://github.com/ansible/ansible.git /silo/userspace/
     # Show installed pip packages and their versions (to be copied into docs)
     echo "----------------------------------------" &&\
     pip list --format freeze | sed -e 's/==/ /; s/^/- /' >&2
+
+# Set MANPATH to avoid call to `manpath` which is not installed
+ENV MANPATH=""
 
 ENTRYPOINT ["/silo/entrypoint"]
 

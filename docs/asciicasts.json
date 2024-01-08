@@ -642,11 +642,11 @@
     ],
     [
       0.016344,
-      "Unable to find image 'grpn/ansible-silo:2.0.0' locally\r\n"
+      "Unable to find image 'rpersee/ansible-silo:2.0.0' locally\r\n"
     ],
     [
       1.0,
-      "2.0.0: Pulling from grpn/ansible-silo\r\n\r\n\u001b[1A\u001b[2K\r88286f41530e: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\reead95f13ee2: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\re8bd0f05a3dd: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\rc87018f548c4: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\r951dcb5cac62: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\rcf3469fee9c1: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\rfa96429240dc: Pulling fs layer \r\u001b[1B\u001b[4A\u001b[2K\rc87018f548c4: Waiting \r\u001b[4B\u001b[3A\u001b[2K\r951dcb5cac62: Waiting \r\u001b[3B\u001b[2A\u001b[2K\rcf3469fee9c1: Waiting \r\u001b[2B"
+      "2.0.0: Pulling from rpersee/ansible-silo\r\n\r\n\u001b[1A\u001b[2K\r88286f41530e: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\reead95f13ee2: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\re8bd0f05a3dd: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\rc87018f548c4: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\r951dcb5cac62: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\rcf3469fee9c1: Pulling fs layer \r\u001b[1B\r\n\u001b[1A\u001b[2K\rfa96429240dc: Pulling fs layer \r\u001b[1B\u001b[4A\u001b[2K\rc87018f548c4: Waiting \r\u001b[4B\u001b[3A\u001b[2K\r951dcb5cac62: Waiting \r\u001b[3B\u001b[2A\u001b[2K\rcf3469fee9c1: Waiting \r\u001b[2B"
     ],
     [
       0.33334,
@@ -1074,7 +1074,7 @@
     ],
     [
       0.001264,
-      "Status: Downloaded newer image for grpn/ansible-silo:2.0.0\r\n"
+      "Status: Downloaded newer image for rpersee/ansible-silo:2.0.0\r\n"
     ],
     [
       0.129487,
@@ -1830,11 +1830,11 @@
     ],
     [
       1.0,
-      "latest: Pulling from grpn/ansible-silo\r\nDigest: sha256:dc3664c034e6c3dfcb83a773810d504805e23fef104101439b89185b2bb5517e\r\n"
+      "latest: Pulling from rpersee/ansible-silo\r\nDigest: sha256:dc3664c034e6c3dfcb83a773810d504805e23fef104101439b89185b2bb5517e\r\n"
     ],
     [
       0.003718,
-      "Status: Downloaded newer image for grpn/ansible-silo:latest\r\n"
+      "Status: Downloaded newer image for rpersee/ansible-silo:latest\r\n"
     ],
     [
       0.134362,
@@ -7330,7 +7330,7 @@
     ],
     [
       0.02635,
-      "Step 1/12 : FROM grpn/ansible-silo:2.0.0\r\n"
+      "Step 1/12 : FROM rpersee/ansible-silo:2.0.0\r\n"
     ],
     [
       0.000426,
@@ -7506,7 +7506,7 @@
     ],
     [
       0.025362,
-      "REPOSITORY                            TAG                 IMAGE ID            CREATED             SIZE\r\nexample                               0.0.1               155a7099cece        3 seconds ago       291 MB\r\nexample                               latest              155a7099cece        3 seconds ago       291 MB\r\ngrpn/ansible-silo                     2.0.0               9e885471e147        3 days ago          268 MB\r\ngrpn/ansible-silo                     latest              9e885471e147        3 days ago          268 MB\r\n"
+      "REPOSITORY                            TAG                 IMAGE ID            CREATED             SIZE\r\nexample                               0.0.1               155a7099cece        3 seconds ago       291 MB\r\nexample                               latest              155a7099cece        3 seconds ago       291 MB\r\nrpersee/ansible-silo                     2.0.0               9e885471e147        3 days ago          268 MB\r\nrpersee/ansible-silo                     latest              9e885471e147        3 days ago          268 MB\r\n"
     ],
     [
       0.000461,
@@ -9286,7 +9286,7 @@
     ],
     [
       0.065065,
-      "Executing: /usr/bin/docker run --interactive --tty --rm --volume \"/home/some.user/ansible-silo/docs/demo-source:/home/user/playbooks\" --env ASCIINEMA_REC --env DEMO_PROMPT --env DIRSTACK --env EUID --env GITAWAREPROMPT --env HISTCONTROL --env HISTSIZE --env HOSTTYPE --env ITERM_ORIG_PS1 --env ITERM_PREV_PS1 --env LANG --env LESSOPEN --env MAIL --env OPTERR --env OPTIND --env PIPESTATUS --env POSIXLY_CORRECT --env PPID --env PS4 --env SHELLOPTS --env SHLVL --env docker_cmd --env docker_default  --volume \"silo.some.user:/silo/userspace\" --env \"SILO_VOLUME=silo.some.user\" --hostname \"silo.example.com\" --volume /var/run/docker.sock:/var/run/docker.sock --privileged  --volume \"/home/some.user/.ssh:/home/user/._ssh\" --volume \"/tmp/ssh-A2T12fxISh\":\"/tmp/ssh-A2T12fxISh\" --env SSH_AUTH_SOCK --env USER_NAME=\"some.user\" --env USER_ID=\"1234\" \"grpn/ansible-silo:2.0.0\" \"ansible\" \"--version\"\r\n\r\n"
+      "Executing: /usr/bin/docker run --interactive --tty --rm --volume \"/home/some.user/ansible-silo/docs/demo-source:/home/user/playbooks\" --env ASCIINEMA_REC --env DEMO_PROMPT --env DIRSTACK --env EUID --env GITAWAREPROMPT --env HISTCONTROL --env HISTSIZE --env HOSTTYPE --env ITERM_ORIG_PS1 --env ITERM_PREV_PS1 --env LANG --env LESSOPEN --env MAIL --env OPTERR --env OPTIND --env PIPESTATUS --env POSIXLY_CORRECT --env PPID --env PS4 --env SHELLOPTS --env SHLVL --env docker_cmd --env docker_default  --volume \"silo.some.user:/silo/userspace\" --env \"SILO_VOLUME=silo.some.user\" --hostname \"silo.example.com\" --volume /var/run/docker.sock:/var/run/docker.sock --privileged  --volume \"/home/some.user/.ssh:/home/user/._ssh\" --volume \"/tmp/ssh-A2T12fxISh\":\"/tmp/ssh-A2T12fxISh\" --env SSH_AUTH_SOCK --env USER_NAME=\"some.user\" --env USER_ID=\"1234\" \"rpersee/ansible-silo:2.0.0\" \"ansible\" \"--version\"\r\n\r\n"
     ],
     [
       1.0,
